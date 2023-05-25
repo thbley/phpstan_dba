@@ -14,7 +14,7 @@ jobs:
     - name: Wait for database to be ready
       run: until mysql -h 127.0.0.1 -uroot -proot -e "select now()"; do echo "waiting..."; sleep 1; done
 
-    - name: Wait for database to be ready
+    - name: import dump
       run: cat test.sql | mysql -h 127.0.0.1 -uroot -proot tasks
 
     - name: run phpstan-dba
