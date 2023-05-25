@@ -1,0 +1,21 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Start mysql container
+      run: docker run --rm -it -d -p 3306:3306 mysql:8.0
+
+    - name: Wait for database to be ready
+      run: until mysql -uroot -proot -e "select now()"; do echo "waiting..."; sleep 1; done
+
+    - name: Wait for database to be ready
+      run: cat test.sql | mysql -uroot -proot tasks
+
+    - name: run phpstan-dba
+      run: php -dmemory_limit=192M vendor/bin/phpstan analyze --no-progress --ansi -c phpstan-dba.neon

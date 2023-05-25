@@ -1,0 +1,18 @@
+{
+    "name": "tb/phpstan-dba",
+    "autoload": {
+        "psr-4": {
+            "Tb\\PhpstanDba\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thomas Bley",
+            "email": "mails@thomasbley.de"
+        }
+    ],
+    "require": {
+        "staabm/phpstan-dba": "^0.2.72",
+        "sqlftw/sqlftw": "^0.1.11"
+    }
+}

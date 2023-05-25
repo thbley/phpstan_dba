@@ -1,0 +1,11 @@
+includes:
+  - vendor/staabm/phpstan-dba/config/dba.neon
+parameters:
+  level: max
+  paths:
+    - src/
+  excludePaths:
+    - src/vendor/
+  bootstrapFiles:
+    - phpstan-dba.php
+  checkExplicitMixed: false
