@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Start mysql container
-      run: docker run --rm -it -d -p 3306:3306 mysql:8.0
+      run: docker run --rm -d -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=tasks -p 3306:3306 mysql:8.0
 
     - name: Wait for database to be ready
       run: until mysql -uroot -proot -e "select now()"; do echo "waiting..."; sleep 1; done
